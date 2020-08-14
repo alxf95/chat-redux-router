@@ -10,7 +10,7 @@ import App from './components/App';
 import channelsReducer from './reducers/channelsReducer';
 import currentUserReducer from './reducers/currentUserReducer';
 import messagesReducer from './reducers/messagesReducer';
-import selectedChannelReducer from './reducers/channelsReducer';
+import selectedChannelReducer from './reducers/selectedChannelReducer';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 

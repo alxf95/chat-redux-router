@@ -13,8 +13,12 @@ class MessageList extends Component {
     this.messageListRef = React.createRef();
   }
 
+  fetchChannelMessages = () => {
+    this.props.fetchMessages(this.props.selectedChannel);
+  };
+
   componentDidMount = () => {
-    setInterval(this.props.fetchMessages(this.props.selectedChannel), 3000);
+    setInterval(this.fetchChannelMessages, 3000);
   };
 
   componentDidUpdate = prevProps => {
@@ -24,8 +28,14 @@ class MessageList extends Component {
   };
 
   renderMessages = () => {
+    const channelMessages = this.props.messages.filter(message => {
+      return message.channel === this.props.selectedChannel;
+    });
+
+    console.log(channelMessages);
+
     if (this.props.messages.length > 0) {
-      return this.props.messages.map(message => (
+      return channelMessages.map(message => (
         <Message message={message} key={message.id} />
       ));
     }

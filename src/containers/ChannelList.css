@@ -6,3 +6,7 @@
   cursor: pointer;
   width: 50px
 }
+
+.active {
+  font-weight: bold;
+}

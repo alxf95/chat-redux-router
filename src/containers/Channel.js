@@ -6,13 +6,17 @@ import { selectChannel } from '../actions';
 
 class Channel extends Component {
   handleClick = () => {
-    // console.log(this.props);
     this.props.selectChannel(this.props.channel);
   };
 
   render() {
     return (
-      <div onClick={this.handleClick} className="channel item">
+      <div
+        onClick={this.handleClick}
+        className={`channel item ${
+          this.props.channel === this.props.selectedChannel ? 'active' : ''
+        }`}
+      >
         {this.props.channel}
       </div>
     );
@@ -20,7 +24,7 @@ class Channel extends Component {
 }
 
 const mapDispatchToProps = dispatch => {
-  bindActionCreators({ selectChannel }, dispatch);
+  return bindActionCreators({ selectChannel }, dispatch);
 };
 
 const mapStateToProps = state => {

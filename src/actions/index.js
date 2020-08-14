@@ -21,9 +21,9 @@ export const createMessage = (channel, author, content) => {
   return { type: CREATE_MESSAGE, payload: promise };
 };
 
-export const selectChannel = selectedChannel => {
+export const selectChannel = channel => {
   return {
     type: SELECT_CHANNEL,
-    payload: selectedChannel,
+    payload: channel,
   };
 };
