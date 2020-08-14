@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Channel from './Channel';
-import './ChannelList.css';
+import './channel_list.css';
 
 class ChannelList extends Component {
   render() {

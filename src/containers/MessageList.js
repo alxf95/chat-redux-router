@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import Message from '../components/Message';
 import MessageForm from '../containers/MessageForm';
 import { fetchMessages } from '../actions';
-import './MessageList.css';
+import './message_list.css';
 
 class MessageList extends Component {
   constructor(props) {
@@ -31,8 +31,6 @@ class MessageList extends Component {
     const channelMessages = this.props.messages.filter(message => {
       return message.channel === this.props.selectedChannel;
     });
-
-    console.log(channelMessages);
 
     if (this.props.messages.length > 0) {
       return channelMessages.map(message => (
