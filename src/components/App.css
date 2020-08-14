@@ -1,0 +1,12 @@
+.app {
+  display: flex;
+}
+
+.left-scene {
+  flex: 30% 0 0;
+}
+
+.right-scene {
+  margin-top: 20px;
+  flex: 70% 0 0;
+}

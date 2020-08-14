@@ -1,7 +1,11 @@
-export default (state = null, action) => {
+import { FETCH_MESSAGES, CREATE_MESSAGE } from '../actions';
+
+export default (state = [], action) => {
   switch (action.type) {
-    case 'SET_MESSAGES':
+    case FETCH_MESSAGES:
       return action.payload;
+    case CREATE_MESSAGE:
+      return [...state, action.payload];
     default:
       return state;
   }
