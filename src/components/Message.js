@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Emojify from 'react-emojione';
+
 import './message.css';
 
 class Message extends Component {
@@ -33,7 +35,9 @@ class Message extends Component {
               - {date.getHours()}:{date.getMinutes()}
             </em>
           </p>
-          <div className="text">{content}</div>
+          <Emojify>
+            <span>{content}</span>
+          </Emojify>
         </div>
       </div>
     );
