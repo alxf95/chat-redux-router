@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Message from '../components/Message';
-import MessageForm from '../containers/MessageForm';
+import MessageForm from './MessageForm';
 import { fetchMessages } from '../actions';
 import './message_list.css';
 
@@ -27,6 +27,10 @@ class MessageList extends Component {
     }
   };
 
+  componentWillUnmount = () => {
+    clearInterval(this.fetchChannelMessages);
+  };
+
   renderMessages = () => {
     const channelMessages = this.props.messages.filter(message => {
       return message.channel === this.props.selectedChannel;
@@ -38,10 +42,6 @@ class MessageList extends Component {
       ));
     }
     return null;
-  };
-
-  componentWillUnmount = () => {
-    clearInterval(this.fetchChannelMessages);
   };
 
   render() {

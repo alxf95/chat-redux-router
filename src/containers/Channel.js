@@ -10,14 +10,16 @@ class Channel extends Component {
   };
 
   render() {
+    const { channel, selectedChannel } = this.props;
+
     return (
       <div
         onClick={this.handleClick}
         className={`channel item ${
-          this.props.channel === this.props.selectedChannel ? 'active' : ''
+          channel === selectedChannel ? 'active' : ''
         }`}
       >
-        {this.props.channel}
+        {channel}
       </div>
     );
   }
