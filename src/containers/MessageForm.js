@@ -10,6 +10,10 @@ class MessageForm extends Component {
     this.state = { value: '' };
   }
 
+  componentDidMount = () => {
+    this.messageBox.focus();
+  };
+
   handleChange = event => {
     this.setState({ value: event.target.value });
   };
@@ -18,7 +22,7 @@ class MessageForm extends Component {
     event.preventDefault();
     if (this.state.value !== '') {
       this.props.createMessage(
-        this.props.selectedChannel,
+        this.props.channelFromParams,
         this.props.currentUser,
         this.state.value
       );
@@ -30,6 +34,9 @@ class MessageForm extends Component {
     return (
       <form className="ui action input" onSubmit={this.handleSubmit}>
         <input
+          ref={input => {
+            this.messageBox = input;
+          }}
           placeholder="Post message..."
           type="text"
           value={this.state.value}
@@ -45,7 +52,6 @@ class MessageForm extends Component {
 
 const mapStateToProps = state => {
   return {
-    selectedChannel: state.selectedChannel,
     currentUser: state.currentUser,
     messages: state.messages,
   };

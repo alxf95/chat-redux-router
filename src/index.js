@@ -4,6 +4,8 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import { logger } from 'redux-logger';
 import reduxPromise from 'redux-promise';
+import { BrowserRouter, Route, Redirect, Switch } from 'react-router-dom';
+// import { createHistory as history } from 'history';
 
 import App from './components/App';
 
@@ -26,7 +28,7 @@ const reducers = combineReducers({
 const initialState = {
   channels: ['general', 'react', 'london'],
   currentUser:
-    prompt('What is your username?') ||
+    // prompt('What is your username?') ||
     `anonymous${Math.floor(10 + Math.random() * 90)}`,
   selectedChannel: 'general',
 };
@@ -35,7 +37,12 @@ const root = document.getElementById('root');
 
 ReactDOM.render(
   <Provider store={createStore(reducers, initialState, middlewares)}>
-    <App />
+    <BrowserRouter>
+      <Switch>
+        <Route path="/:channel" component={App} />
+        <Redirect from="/" to="/general" />
+      </Switch>
+    </BrowserRouter>
   </Provider>,
   root
 );
